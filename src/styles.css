@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* Chrome, Safari, Edge, Opera */
+
+body{
+   font-family: 'Open Sans', sans-serif !important;
+}
+ul li{
+   list-style-type: none;
+ }

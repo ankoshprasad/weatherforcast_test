@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row outerdiv">
+        <div class="col-sm-3 px-0 pb-1 viewport-height" style="background-color:lavender;">
+            <div class="pl-3 py-2 bg-color">
+                <div class="headings">Country List</div>
+            </div>
+            <div class="px-2 mt-2 addlist">
+                <input type="text"  placeholder="City name"  [(ngModel)]="country">
+                <button (click)="addList(country)" class="ml-1 btn-custom addbtn">Add City</button>
+            </div>
+            <div class="text-center d-flex align-items-center justify-content-center h-80" *ngIf="lMessage">Enter city name and click 'Add City' to get the City name</div>
+            <div class="px-3 mt-2 citylist" *ngIf="!lMessage">
+                <ul>
+                    <li *ngFor="let city of list;let i = index"><span (click)="getCity(city)">{{city}}</span>
+                        <i (click)="list.splice(i, 1);listcc()" class="float-right las la-times"></i> <i (click)="getCity(city)" class="mr-2 float-right las la-sync"></i> 
+                    </li> 
+                </ul>
+                <DIV *ngIf="clear" class="float-right clear"><button (click)="clearall()" class="ml-1 btn btn-basic btn-custom">Clear</button></DIV>
+            </div>
+        </div>
+        <div class="col-sm-9 px-0 pb-1 viewport-height" style="background-color:lavenderblush;">
+            <div class="pl-3 py-2 bg-color">
+                <div class="headings">Weather Details</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center h-85" *ngIf="bMessage">Click City name to get the weather details</div>
+            <div class="px-3 mt-2" *ngIf="!bMessage" >
+                <h4 class="text-uppercase">{{city}}</h4>
+                <div class="row">
+                    <div class="col-sm-3 pl-0"><img class="img-fluid" src="assets/animated/{{weatherStatus}}.svg"></div>
+                    <div class="col-sm-6 pl-0">
+                        <p>{{temp  | number : '1.0-2'}}&#8451;</p>
+                        <p class="text-capitalize">{{wheathermain}}</p>
+                        <p><span>Wind</span> : <span>{{windSpeed}} m/s {{windDeg}} &#176;</span></p>
+                        <p><span>Pressure</span> : <span>{{pressure}} mbar</span></p>
+                    </div>
+                </div>
+                <div class="row ml-xl-n5 mt-5">
+                    <div class="col-sm-2 pl-0 text-center">
+                        <div>{{day1}}</div>
+                        <div>{{weatherStatus}}</div>
+                        <div><img class="img-fluid" src="assets/animated/{{weatherStatus}}.svg"></div>
+                        <div>{{temp | number : '1.0-2'}}&#8451;</div>
+                    </div>
+                    <div class="col-sm-2 pl-0 text-center">
+                        <div>{{day2}}</div>
+                        <div>{{weatherStatus1}}</div>
+                        <div><img class="img-fluid" src="assets/animated/{{weatherStatus1}}.svg"></div>
+                        <div>{{tue  | number : '1.0-2'}}&#8451;</div>
+                    </div>
+                    <div class="col-sm-2 pl-0 text-center">
+                        <div>{{day3}}</div>
+                        <div>{{weatherStatus2}}</div>
+                        <div><img class="img-fluid" src="assets/animated/{{weatherStatus2}}.svg"></div>
+                        <div>{{wed  | number : '1.0-2'}}&#8451;</div>
+                    </div>
+                    <div class="col-sm-2 pl-0 text-center">
+                        <div>{{day4}}</div>
+                        <div>{{weatherStatus3}}</div>
+                        <div><img class="img-fluid" src="assets/animated/{{weatherStatus3}}.svg"></div>
+                        <div>{{thu  | number : '1.0-2'}}&#8451;</div>
+                    </div>
+                    <div class="col-sm-2 pl-0 text-center">
+                        <div>{{day5}}</div>
+                        <div>{{weatherStatus4}}</div>
+                        <div><img class="img-fluid" src="assets/animated/{{weatherStatus4}}.svg"></div>
+                        <div>{{fri  | number : '1.0-2'}}&#8451;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- custom modal -->
+<div id="myModalc" class="modalc" *ngIf="errorMessage">
+    <!-- Modal content -->
+    <div class="modal-contentc">
+        <div><i class="mb-2 las la-exclamation-triangle"></i></div>
+      <p>Invalid City,Please use the correct city name in uppercase</p>
+      <div><button (click)="okHide()" class="btn addbtn">OK</button></div>
+    </div>
+  </div>
