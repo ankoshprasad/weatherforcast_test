@@ -9,11 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WeatherComponent } from './weather/weather.component';
+import { CurrencyPipe } from './pipes/currency.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    WeatherComponent
+    WeatherComponent,
+    CurrencyPipe,
   ],
   imports: [
     NgbModule,

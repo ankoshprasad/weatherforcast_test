@@ -50,8 +50,9 @@ export class WeatherComponent implements OnInit {
   /*To add the list */
   addList(capital){
     if(capital == 'MOSCOW' || capital == 'LONDON' || capital == 'BRASILIA' || capital == 'TOKYO' || capital == 'NEW DELHI' || capital == 'KATHMANDU' || capital == 'PARIS' || capital == 'THIMPHU' || capital == 'JAKARTA'  ){
-    this.list.push(capital);
-    this.list.reverse();
+      if(this.list.indexOf(capital) === -1) {
+        this.list.unshift(capital);
+    }
     this.lMessage = false;
     console.log(this.list.length);
     if(this.list.length > 8){

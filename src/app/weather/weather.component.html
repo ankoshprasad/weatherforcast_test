@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row outerdiv">
-        <div class="col-sm-3 px-0 pb-1 viewport-height" style="background-color:lavender;">
+        <div class="col-sm-3 px-0 pb-1 viewport-height" style="background-color:lavender;z-index:1;">
             <div class="pl-3 py-2 bg-color">
                 <div class="headings">Country List</div>
             </div>
@@ -11,8 +11,9 @@
             <div class="text-center d-flex align-items-center justify-content-center h-80" *ngIf="lMessage">Enter city name and click 'Add City' to get the City name</div>
             <div class="px-3 mt-2 citylist" *ngIf="!lMessage">
                 <ul>
-                    <li *ngFor="let city of list;let i = index"><span (click)="getCity(city)">{{city}}</span>
-                        <i (click)="list.splice(i, 1);listcc()" class="float-right las la-times"></i> <i (click)="getCity(city)" class="mr-2 float-right las la-sync"></i> 
+                    <li *ngFor="let city of list;let i = index" class="row mx-0">
+                        <div class="px-0 col-sm-10" (click)="getCity(city)">{{city}}</div>
+                       <div class="col-sm-2 px-0"><i (click)="getCity(city)" class="mr-2 las la-sync"></i>  <i (click)="list.splice(i, 1);listcc()" class="las la-times"></i> </div>
                     </li> 
                 </ul>
                 <DIV *ngIf="clear" class="float-right clear"><button (click)="clearall()" class="ml-1 btn btn-basic btn-custom">Clear</button></DIV>

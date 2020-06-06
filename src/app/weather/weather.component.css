@@ -22,6 +22,14 @@
     border: 1px solid #ccc;
 }
 
+.pr-60 {
+    padding-right: 50%;
+}
+
+.citylist ul li div {
+    cursor: pointer;
+}
+
 .addlist input:focus {
     outline: none !important;
 }
@@ -84,19 +92,27 @@
 /*Custom modal*/
 
 .modalc {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-contentc {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+.modal-contentc {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -104,22 +120,24 @@
     width: 35%;
     text-align: center;
     border-radius: 4px;
-  }
-  .modal-contentc i{
-color: red;
-font-size: 2rem;
-  }
-  /* The Close Button */
-  .closec {
+}
+
+.modal-contentc i {
+    color: red;
+    font-size: 2rem;
+}
+
+/* The Close Button */
+
+.closec {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .closec:hover,
-  .closec:focus {
+}
+
+.closec:hover, .closec:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
