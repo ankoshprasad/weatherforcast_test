@@ -7,7 +7,7 @@ import { CommonserviceService } from './../utilities/services/commonservice.serv
 })
 export class WeatherComponent implements OnInit {
   getWeathertData: any;
-  city:string;
+  city:any;
   temp:number;
   windSpeed:number;
   windDeg:number;
@@ -33,6 +33,7 @@ export class WeatherComponent implements OnInit {
   day3:number;
   day4:number;
   day5:number;
+  selectedIndex: number = null;
 
   constructor(private commonserviceService: CommonserviceService) { }
 
@@ -49,6 +50,7 @@ export class WeatherComponent implements OnInit {
 
   /*To add the list */
   addList(capital){
+    this.selectedIndex = null;
     if(capital == 'MOSCOW' || capital == 'LONDON' || capital == 'BRASILIA' || capital == 'TOKYO' || capital == 'NEW DELHI' || capital == 'KATHMANDU' || capital == 'PARIS' || capital == 'THIMPHU' || capital == 'JAKARTA'  ){
       if(this.list.indexOf(capital) === -1) {
         this.list.unshift(capital);
@@ -125,4 +127,10 @@ export class WeatherComponent implements OnInit {
   okHide(){
     this.errorMessage = false;
   }
+
+  /* Adding active class on list */
+
+  setIndex(index: number) {
+    this.selectedIndex = index;
+ }
 }

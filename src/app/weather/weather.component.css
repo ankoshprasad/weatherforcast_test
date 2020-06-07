@@ -85,6 +85,22 @@
     height: 70%!important;
 }
 
+.posabs {
+    POSITION: absolute;
+    right: 1rem;
+    top: 3rem;
+    cursor: pointer;
+}
+
+.clear .btn:hover {
+    background-color: #000;
+    color: #FFf;
+}
+
+.posabs i {
+    font-size: 1.3rem;
+}
+
 .headings {
     color: #FFF;
 }
@@ -110,6 +126,9 @@
     /* Black w/ opacity */
 }
 
+.active{
+    font-weight:bold !important;
+}
 /* Modal Content/Box */
 
 .modal-contentc {
@@ -141,3 +160,12 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+@media  (min-width: 768px) and (max-width: 1280px) {
+    .addlist input{
+        width: 60% !important;
+    }
+    .citylist ul li i{
+        font-size: 15px !important;
+    }
+  }
