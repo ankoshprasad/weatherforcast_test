@@ -28,29 +28,33 @@ export class WeatherComponent implements OnInit {
   lMessage: boolean = true;
   wheathermain: string;
   errorMessage: boolean = false;
-  day1: number;
-  day2: number;
-  day3: number;
-  day4: number;
-  day5: number;
+  date1: number;
+  date2: number;
+  date3: number;
+  date4: number;
+  date5: number;
+  days1: any;
+  days2: any;
+  days3: any;
+  days4: any;
+  days5: any;
   selectedIndex: string;
 
   constructor(private commonserviceService: CommonserviceService) { }
 
   ngOnInit() {
-    let day1 = new Date();
-    day1.getDate();
-    this.day1 = day1.getDate();
-    this.day2 = this.day1 + 1;
-    this.day3 = this.day2 + 1;
-    this.day4 = this.day3 + 1;
-    this.day5 = this.day4 + 1;
-    console.log(this.day1);
+    let date1 = new Date();
+    date1.getDate();
+    this.date1 = date1.getDate();
+    this.date2 = this.date1 + 1;
+    this.date3 = this.date2 + 1;
+    this.date4 = this.date3 + 1;
+    this.date5 = this.date4 + 1;
   }
 
   /*To add the list */
   addList(capital) {
-    this.selectedIndex = null;
+    //this.selectedIndex = null;
     if (capital == 'MOSCOW' || capital == 'LONDON' || capital == 'BRASILIA' || capital == 'TOKYO' || capital == 'NEW DELHI' || capital == 'KATHMANDU' || capital == 'PARIS' || capital == 'THIMPHU' || capital == 'JAKARTA') {
       if (this.list.indexOf(capital) === -1) {
         this.list.unshift(capital);
@@ -73,6 +77,12 @@ export class WeatherComponent implements OnInit {
 
   }
 
+  addDays(dateObj, numDays) {
+    dateObj.setDate(dateObj.getDate() + numDays);
+    return dateObj;
+ }
+ 
+  /* Delete the individual list */
   listcc(city) {
     console.log(city);
     if (this.list.length < 2) {
@@ -82,7 +92,12 @@ export class WeatherComponent implements OnInit {
 
   /* To get city value on click on the list */
   getCity(event) {
-    console.log(event);
+    let options = { weekday: 'short' };
+    this.days1 = new Date().toLocaleString('en-US',options);
+    this.days2 = this.addDays(new Date(), 1).toLocaleString('en-US',options);
+    this.days3 = this.addDays(new Date(), 2).toLocaleString('en-US',options);
+    this.days4 = this.addDays(new Date(), 3).toLocaleString('en-US',options);
+    this.days5 = this.addDays(new Date(), 4).toLocaleString('en-US',options);
     this.commonserviceService.getData(event).subscribe(getListData => {
       this.bMessage = false;
       this.getWeathertData = getListData.json();
