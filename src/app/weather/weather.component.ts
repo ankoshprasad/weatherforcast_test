@@ -39,6 +39,7 @@ export class WeatherComponent implements OnInit {
   days4: any;
   days5: any;
   selectedIndex: string;
+  event:string;
 
   constructor(private commonserviceService: CommonserviceService) { }
 
@@ -54,7 +55,7 @@ export class WeatherComponent implements OnInit {
 
   /*To add the list */
   addList(capital) {
-    //this.selectedIndex = null;
+    this.selectedIndex = null;
     if (capital == 'MOSCOW' || capital == 'LONDON' || capital == 'BRASILIA' || capital == 'TOKYO' || capital == 'NEW DELHI' || capital == 'KATHMANDU' || capital == 'PARIS' || capital == 'THIMPHU' || capital == 'JAKARTA') {
       if (this.list.indexOf(capital) === -1) {
         this.list.unshift(capital);
@@ -84,7 +85,12 @@ export class WeatherComponent implements OnInit {
  
   /* Delete the individual list */
   listcc(city) {
-    console.log(city);
+    if(city == this.event){
+      this.bMessage = true;
+    }
+    if (this.list.length < 1) {
+      this.lMessage = true;
+    }
     if (this.list.length < 2) {
       this.clear = false;
     }
@@ -92,6 +98,7 @@ export class WeatherComponent implements OnInit {
 
   /* To get city value on click on the list */
   getCity(event) {
+    this.event =  event;
     let options = { weekday: 'short' };
     this.days1 = new Date().toLocaleString('en-US',options);
     this.days2 = this.addDays(new Date(), 1).toLocaleString('en-US',options);
@@ -101,7 +108,7 @@ export class WeatherComponent implements OnInit {
     this.commonserviceService.getData(event).subscribe(getListData => {
       this.bMessage = false;
       this.getWeathertData = getListData.json();
-      console.log(this.getWeathertData.list[0].weather[0].description);
+      
       this.city = this.getWeathertData.city.name;
       this.temp = this.getWeathertData.list[0].temp.day;
       this.temp = this.temp / 10;

@@ -23,7 +23,7 @@
             <div class="pl-3 py-2 bg-color">
                 <div class="headings">Weather Details</div>
             </div>
-            <div class="d-flex align-items-center justify-content-center h-85" *ngIf="bMessage">Click City name to get the weather details</div>
+            <div class="d-flex align-items-center justify-content-center h-85" *ngIf="bMessage">Click city name to get the weather details</div>
             <div class="px-3 mt-2" *ngIf="!bMessage" >
                 <h4 class="text-uppercase">{{city}}</h4>
                 <span class="posabs"><i (click)="getCity(city)" class="las la-sync"></i></span>
